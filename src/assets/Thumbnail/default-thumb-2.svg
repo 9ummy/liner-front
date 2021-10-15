@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="96" viewBox="0 0 96 96">
+    <defs>
+        <linearGradient id="yaavyxmpfb" x1="4.771%" x2="90.492%" y1="2.544%" y2="47.217%">
+            <stop offset="0%" stop-color="#C6F9FC"/>
+            <stop offset="100%" stop-color="#B2EBEE"/>
+        </linearGradient>
+        <linearGradient id="z2fo1iqdfd" x1="19.172%" x2="62.726%" y1="44.803%" y2="53.09%">
+            <stop offset="0%" stop-color="#00BBC4"/>
+            <stop offset="100%" stop-color="#05A6CC"/>
+        </linearGradient>
+        <path id="odd0f4whxa" d="M0 0H96V96H0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g transform="translate(-223 -23) translate(223 23)">
+                <mask id="jrzb34g85c" fill="#fff">
+                    <use xlink:href="#odd0f4whxa"/>
+                </mask>
+                <use fill="url(#yaavyxmpfb)" xlink:href="#odd0f4whxa"/>
+                <path fill="#00BBC4" d="M19 54c10 0 21.5 8.5 27.5 8.817l-.474.18-.942.367-.937.375-.934.38-4.2 1.75-.945.387-1.43.572-.967.374C30.164 69.297 24.081 71 16 71 7.948 71 .723 67.858-5.675 61.573 3.571 55.524 11.13 54 19 54zm77 8v5.905c-4.188-.332-7.822-1.468-11.344-2.802C88.635 64.314 92.416 63.28 96 62z" mask="url(#jrzb34g85c)" opacity=".3"/>
+                <path fill="url(#z2fo1iqdfd)" fill-opacity=".5" d="M16 71c21 0 28.5-11.5 47.5-11.5 14.208 0 21.747 8.719 35.5 8.5.188-.003 10.522-1.003 31-3v41.5H-10l-8.5-64C-9.5 61.5 2 71 16 71z" mask="url(#jrzb34g85c)"/>
+            </g>
+        </g>
+    </g>
+</svg>
