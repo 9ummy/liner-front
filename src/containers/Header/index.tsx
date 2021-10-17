@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { History, LocationState } from 'history';
 import HeaderButton from '../../components/HeaderButton';
 import Logo from '../../components/Logo';
 import SearchBar from '../../components/SearchBar';
@@ -10,22 +11,34 @@ interface Props {
   handleSignUpModal: () => void;
   onFocus: () => void;
   onBlur: () => void;
+  changeKeyword: (arg0: string) => void;
+  history: History<LocationState>;
 }
 
 const HeaderContainer = styled.header`
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 80px;
   background-color: white;
-  padding: 0 50px;
   margin-bottom: 20px;
-  z-index: 0;
+  z-index: 2;
 `;
 
-const ItemContainer = styled.div`
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 20%;
+  margin-left: 50px;
+`;
+
+const ButtonContainer = styled.div`
   display: flex;
   width: 25%;
+  margin-right: 50px;
 `;
 
 const StyledSearchBar = styled(SearchBar)`
@@ -50,17 +63,25 @@ const Header = ({
   handleSignUpModal,
   onFocus,
   onBlur,
+  changeKeyword,
+  history,
 }: Props) => {
   return (
     <HeaderContainer className={className}>
-      <ItemContainer style={{ justifyContent: 'flex-start' }}>
+      <LogoContainer>
         <Logo />
-      </ItemContainer>
-      <StyledSearchBar keyword={keyword} onFocus={onFocus} onBlur={onBlur} />
-      <ItemContainer style={{ justifyContent: 'flex-end' }}>
+      </LogoContainer>
+      <StyledSearchBar
+        keyword={keyword}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        history={history}
+        changeKeyword={changeKeyword}
+      />
+      <ButtonContainer style={{ justifyContent: 'flex-end' }}>
         <SignInButton onClick={handleSignInModal}>Sign In</SignInButton>
         <SignUpButton onClick={handleSignUpModal}>Sign Up</SignUpButton>
-      </ItemContainer>
+      </ButtonContainer>
     </HeaderContainer>
   );
 };
