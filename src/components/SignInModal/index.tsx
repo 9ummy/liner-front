@@ -8,7 +8,9 @@ interface Props {
 }
 
 const Container = styled.div`
-  position: relative;
+  position: fixed;
+  top: 15vh;
+  left: calc(50vw - 200px);
   display: flex;
   flex-direction: column;
   background-color: white;
