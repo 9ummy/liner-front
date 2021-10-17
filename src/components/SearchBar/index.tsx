@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { History, LocationState } from 'history';
 import searchImage from '../../assets/Button/search-finder-btn.svg';
 
 export interface Props {
@@ -8,6 +9,8 @@ export interface Props {
   keyword: string;
   onFocus: () => void;
   onBlur: () => void;
+  changeKeyword: (arg0: string) => void;
+  history: History<LocationState>;
 }
 
 const Container = styled.div`
@@ -34,10 +37,20 @@ const Button = styled.button`
   }
 `;
 
-const SearchBar = ({ className, keyword, onFocus, onBlur }: Props) => {
+const SearchBar = ({
+  className,
+  keyword,
+  onFocus,
+  onBlur,
+  history,
+  changeKeyword,
+}: Props) => {
   const [search, setSearch] = useState(keyword);
+  const encodedSearch = encodeURIComponent(search.replaceAll(' ', '-'));
 
-  console.log(search);
+  useEffect(() => {
+    setSearch(keyword);
+  }, [keyword]);
 
   return (
     <Container className={className}>
@@ -47,7 +60,11 @@ const SearchBar = ({ className, keyword, onFocus, onBlur }: Props) => {
         onFocus={onFocus}
         onBlur={onBlur}
       />
-      <Button>
+      <Button
+        onClick={() => {
+          history.push(`/liner.us/trusted-search/en/${encodedSearch}`);
+          changeKeyword(search);
+        }}>
         <img src={searchImage} alt='search' />
       </Button>
     </Container>
