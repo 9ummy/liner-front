@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import linerLogo from '../../assets/Logo/liner-logo.svg';
 
 export interface Props {
@@ -7,12 +6,12 @@ export interface Props {
 
 const Logo = ({ className }: Props) => {
   return (
-    <Link
+    <a
       className={className}
       style={{ padding: '10px' }}
-      to='https://getliner.com'>
+      href='https://getliner.com'>
       <img src={linerLogo} alt='liner logo' />
-    </Link>
+    </a>
   );
 };
 
