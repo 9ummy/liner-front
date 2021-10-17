@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import {
+  Route,
+  Switch,
+  Redirect,
+  BrowserRouter as Router,
+} from 'react-router-dom';
+import ListPage from './containers/ListPage';
+import DetailPage from './containers/DetailPage';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route
+          exact
+          path='/liner.us/trusted-search/en/:keyword'
+          component={ListPage}
+        />
+        <Route
+          exact
+          path='/liner.us/trusted-search/highlight/en/:id/:title'
+          component={DetailPage}
+        />
+        <Redirect exact from='/' to='/liner.us/trusted-search/en/search' />
+        <Route
+          render={() => <Redirect to='/liner.us/trusted-search/en/search' />}
+        />
+      </Switch>
+    </Router>
   );
 }
 
