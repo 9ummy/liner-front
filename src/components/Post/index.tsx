@@ -9,6 +9,7 @@ import thumb5 from '../../assets/Thumbnail/defuault-thumb-5.svg';
 import bookmark from '../../assets/Button/bookmark-btn.svg';
 import share from '../../assets/Button/share-btn.svg';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const defaultImages = [thumb0, thumb1, thumb2, thumb3, thumb4, thumb5];
 
@@ -17,6 +18,7 @@ interface Props {
 
   post: any;
   handleSignUpModal: () => void;
+  changeId?: () => void;
 }
 
 const Container = styled.div`
@@ -107,7 +109,7 @@ const Button = styled.button`
 
 const Post = ({
   index,
-  post: { title, description, image_url, favicon_url, url },
+  post: { document_id, title, description, image_url, favicon_url, url },
   handleSignUpModal,
 }: Props) => {
   const [isOnBookmark, setOnBookmark] = useState(false);
@@ -118,6 +120,7 @@ const Post = ({
   if (!favicon_url) favicon_url = defaultFavicon;
 
   const { hostname } = new URL(url);
+  const encodedTitle = encodeURIComponent(title.replaceAll(' ', '-'));
 
   // 1. 에러 이벤트의 타입 처리?
   // 2. img 태그 내에서 onError={(e) => {e.target.src = defaultImg}} 사용 시 에러 나는 이유?
@@ -134,10 +137,15 @@ const Post = ({
     <Container>
       <Main>
         <Text>
-          <h2 style={{ marginBottom: '10px' }}>{title}</h2>
+          <Link
+            style={{ textDecoration: 'none', color: 'black' }}
+            to={`/liner.us/trusted-search/highlight/en/${document_id}/${encodedTitle}`}>
+            <h2 style={{ marginBottom: '10px' }}>{title}</h2>
+          </Link>
           <P>{description}</P>
         </Text>
-        <a href={url} target='_blank' rel='noreferrer'>
+        <Link
+          to={`/liner.us/trusted-search/highlight/en/${document_id}/${encodedTitle}`}>
           <img
             style={{
               borderRadius: '5px',
@@ -150,7 +158,7 @@ const Post = ({
             onError={handleImageError}
             alt='post thumbnail'
           />
-        </a>
+        </Link>
       </Main>
       <Footer>
         <PageSource>

@@ -25,6 +25,11 @@ const Input = styled.input`
   width: 80%;
   margin: 5px 15px 5px 15px;
   background: #eef1f4;
+  font-family: 'Roboto';
+  font-weight: 400;
+  ::placeholder {
+    color: #787d86;
+  }
 `;
 
 const Button = styled.button`
@@ -59,6 +64,7 @@ const SearchBar = ({
         onChange={(e) => setSearch(e.target.value)}
         onFocus={onFocus}
         onBlur={onBlur}
+        placeholder='Search on LINER'
       />
       <Button
         onClick={() => {

@@ -59,13 +59,14 @@ const SideBanner = ({
     <Container className={className}>
       <h3>People Also Searched For</h3>
       <RecommendContainer>
-        {recommends.map((recommend) => {
+        {recommends.map((recommend: any, index: number) => {
           const encodedSearch = encodeURIComponent(
             recommend.replaceAll(' ', '-')
           );
 
           return (
             <button
+              key={index}
               onClick={() => {
                 history.push(`/liner.us/trusted-search/en/${encodedSearch}`);
                 changeKeyword(recommend);

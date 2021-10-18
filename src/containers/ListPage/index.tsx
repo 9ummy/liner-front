@@ -1,16 +1,24 @@
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import axios from 'axios';
 import Header from '../Header';
 import SignUpModal from '../SignUpModal';
 import SignInModal from '../../components/SignInModal';
-import axios from 'axios';
 import ListHeader from '../../components/ListHeader';
-import Post from '../../components/Post/index';
-import SideBanner from '../../components/SideBanner/index';
+import Post from '../../components/Post';
+import SideBanner from '../../components/SideBanner';
+import FocusDim from '../../components/FocusDim';
+import ModalDim from '../../components/ModalDim';
+
+export type PostType = {
+  docuemnt_id: string;
+};
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 100px;
 `;
 
 const StyledSideBanner = styled(SideBanner)`
@@ -18,23 +26,6 @@ const StyledSideBanner = styled(SideBanner)`
   top: 100px;
   right: 50px;
   width: 17vw;
-`;
-
-const FocusDim = styled.div`
-  background-color: #00000060;
-  position: fixed;
-  top: 80px;
-  width: 100%;
-  height: 100%;
-`;
-
-const ModalDim = styled.div`
-  background-color: #00000060;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
 `;
 
 const ListPage = ({ match, history }: any) => {
@@ -52,7 +43,7 @@ const ListPage = ({ match, history }: any) => {
   const decodedKeyword = decodeURIComponent(keyword.replaceAll('-', ' '));
 
   useEffect(() => {
-    fetchPosts();
+    getPosts();
     getRecommends();
   }, [keyword]);
 
@@ -80,7 +71,7 @@ const ListPage = ({ match, history }: any) => {
     }
   };
 
-  const fetchPosts = async () => {
+  const getPosts = async () => {
     try {
       setLoading(true);
       const res: any = await axios({
@@ -96,6 +87,8 @@ const ListPage = ({ match, history }: any) => {
           num_of_phrase: 7,
         },
       });
+      console.log(res.data);
+
       setUsers(res.data.approx_trust);
       setAnchor(res.data.anchor);
       setPosts(res.data.items);
@@ -105,7 +98,7 @@ const ListPage = ({ match, history }: any) => {
     }
   };
 
-  const fetchMorePosts = async () => {
+  const getMorePosts = async () => {
     try {
       setFetching(true);
       const res: any = await axios({
@@ -136,7 +129,7 @@ const ListPage = ({ match, history }: any) => {
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
     if (scrollTop + clientHeight >= scrollHeight && fetching === false) {
-      fetchMorePosts();
+      getMorePosts();
     }
   };
 
@@ -155,16 +148,16 @@ const ListPage = ({ match, history }: any) => {
 
   return (
     <>
+      <Header
+        keyword={decodedKeyword}
+        handleSignInModal={() => setSignInModal(true)}
+        handleSignUpModal={() => setSignUpModal(true)}
+        onFocus={() => setFocusDim(true)}
+        onBlur={() => setFocusDim(false)}
+        changeKeyword={changeKeyword}
+        history={history}
+      />
       <Container>
-        <Header
-          keyword={decodedKeyword}
-          handleSignInModal={() => setSignInModal(true)}
-          handleSignUpModal={() => setSignUpModal(true)}
-          onFocus={() => setFocusDim(true)}
-          onBlur={() => setFocusDim(false)}
-          changeKeyword={changeKeyword}
-          history={history}
-        />
         {loading ? (
           <h1
             style={{
