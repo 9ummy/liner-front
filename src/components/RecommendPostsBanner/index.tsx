@@ -21,6 +21,7 @@ const Container = styled.div`
   padding: 10px 16px;
   margin-top: 15px;
   margin-bottom: 150px;
+  margin-left: 20px;
   border-radius: 8px;
   background-color: #f6f8fa;
 

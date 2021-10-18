@@ -12,13 +12,13 @@ const Container = styled.div`
   @media only screen and (max-width: 719px) {
     display: none;
   }
+  margin-left: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   padding: 10px 16px;
   border-radius: 8px;
   background-color: #f6f8fa;
-  width: 100%;
 
   h3 {
     text-align: left;

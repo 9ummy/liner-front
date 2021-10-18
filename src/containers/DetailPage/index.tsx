@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import axios from 'axios';
-import Header from '../Header';
-import SignUpModal from '../SignUpModal';
+import Header from '../../components/Header';
+import SignUpModal from '../../components/SignUpModal';
 import SignInModal from '../../components/SignInModal';
 import Post from '../../components/Post';
 import SideBanner from '../../components/SideBanner';
@@ -28,7 +28,7 @@ const PostsContainer = styled.div`
 
   width: 50%;
   margin-left: calc(20% + 50px);
-  margin-right: 10px;
+  margin-right: 20px;
 
   .posts-title {
     @media only screen and (max-width: 719px) {
@@ -55,8 +55,8 @@ const BannerContainer = styled.div`
   @media only screen and (max-width: 719px) {
     display: none;
   }
-  margin-right: 50px;
-  width: 30%;
+  margin: 0 50px;
+  width: 20%;
 `;
 
 const DetailPage = ({ match, history }: any) => {

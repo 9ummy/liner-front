@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { History, LocationState } from 'history';
-import HeaderButton from '../../components/HeaderButton';
-import Logo from '../../components/Logo';
-import SearchBar from '../../components/SearchBar';
+import HeaderButton from '../HeaderButton';
+import Logo from '../Logo';
+import SearchBar from '../SearchBar';
 
 interface Props {
   className?: string;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import axios from 'axios';
-import Header from '../Header';
-import SignUpModal from '../SignUpModal';
+import Header from '../../components/Header';
+import SignUpModal from '../../components/SignUpModal';
 import SignInModal from '../../components/SignInModal';
 import ListHeader from '../../components/ListHeader';
 import Post from '../../components/Post';
@@ -34,7 +34,7 @@ const Container = styled.div`
       width: 90%;
       margin: 0 25px;
     }
-    width: 50%;
+    width: 70%;
     margin-left: calc(20% + 50px);
     margin-right: 10px;
     flex-grow: 7;

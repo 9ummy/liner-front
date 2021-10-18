@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import closeButtonImage from '../../assets/Button/close-btn.svg';
-import OAuthButtons from '../../components/OAuthButtons/index';
+import OAuthButtons from '../OAuthButtons/index';
 
 interface Props {
   className?: string;
