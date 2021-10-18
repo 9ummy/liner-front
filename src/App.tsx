@@ -22,9 +22,9 @@ function App() {
           path='/liner.us/trusted-search/highlight/en/:id/:title'
           component={DetailPage}
         />
-        <Redirect exact from='/' to='/liner.us/trusted-search/en/search' />
+        <Redirect exact from='/' to='/liner.us/trusted-search/en/liner' />
         <Route
-          render={() => <Redirect to='/liner.us/trusted-search/en/search' />}
+          render={() => <Redirect to='/liner.us/trusted-search/en/liner' />}
         />
       </Switch>
     </Router>
