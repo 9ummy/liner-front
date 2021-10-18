@@ -29,16 +29,25 @@ const HeaderContainer = styled.header`
 `;
 
 const LogoContainer = styled.div`
+  @media only screen and (max-width: 719px) {
+    margin-left: 20px;
+  }
   display: flex;
   justify-content: flex-start;
   width: 20%;
   margin-left: 50px;
+  margin-right: 20px;
 `;
 
 const ButtonContainer = styled.div`
+  @media only screen and (max-width: 450px) {
+    display: none;
+  }
+
   display: flex;
   width: 25%;
   margin-right: 50px;
+  margin-left: 10px;
 `;
 
 const StyledSearchBar = styled(SearchBar)`

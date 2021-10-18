@@ -19,6 +19,10 @@ const Container = styled.div`
   align-items: center;
   background-color: #eef1f4;
   border-radius: 10px;
+
+  @media only screen and (max-width: 719px) {
+    display: none;
+  }
 `;
 
 const Input = styled.input`

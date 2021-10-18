@@ -19,13 +19,19 @@ interface Props {
   post: any;
   handleSignUpModal: () => void;
   changeId?: () => void;
+  changePost?: () => void;
 }
 
 const Container = styled.div`
-  width: 50%;
+  /* @media only screen and (max-width: 719px) {
+    min-width: 320px;
+    width: 90%;
+    margin: auto;
+  } */
+  width: 100%;
   background-color: white;
-  margin-left: calc(20% + 50px);
-  margin-right: auto;
+  /* margin-left: calc(20% + 50px); */
+  /* margin-right: auto; */
   padding-top: 20px;
 `;
 
@@ -111,6 +117,7 @@ const Post = ({
   index,
   post: { document_id, title, description, image_url, favicon_url, url },
   handleSignUpModal,
+  changePost,
 }: Props) => {
   const [isOnBookmark, setOnBookmark] = useState(false);
   const [isOnShare, setOnShare] = useState(false);
@@ -139,13 +146,15 @@ const Post = ({
         <Text>
           <Link
             style={{ textDecoration: 'none', color: 'black' }}
-            to={`/liner.us/trusted-search/highlight/en/${document_id}/${encodedTitle}`}>
+            to={`/liner.us/trusted-search/highlight/en/${document_id}/${encodedTitle}`}
+            onClick={changePost}>
             <h2 style={{ marginBottom: '10px' }}>{title}</h2>
           </Link>
           <P>{description}</P>
         </Text>
         <Link
-          to={`/liner.us/trusted-search/highlight/en/${document_id}/${encodedTitle}`}>
+          to={`/liner.us/trusted-search/highlight/en/${document_id}/${encodedTitle}`}
+          onClick={changePost}>
           <img
             style={{
               borderRadius: '5px',

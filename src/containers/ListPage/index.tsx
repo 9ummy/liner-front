@@ -19,13 +19,41 @@ const Container = styled.div`
   height: 100%;
   position: absolute;
   top: 100px;
-`;
+  display: flex;
 
-const StyledSideBanner = styled(SideBanner)`
-  position: absolute;
-  top: 100px;
-  right: 50px;
-  width: 17vw;
+  h1 {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 100px;
+  }
+
+  .list-container {
+    @media only screen and (max-width: 719px) {
+      min-width: 320px;
+      width: 90%;
+      margin: 0 25px;
+    }
+    width: 50%;
+    margin-left: calc(20% + 50px);
+    margin-right: 10px;
+    flex-grow: 7;
+
+    .list-loading {
+      width: 100%;
+      text-align: left;
+      margin: 0;
+    }
+  }
+
+  .banner-container {
+    @media only screen and (max-width: 719px) {
+      display: none;
+    }
+    flex-grow: 3;
+    width: calc(30% - 50px);
+    margin-right: 50px;
+  }
 `;
 
 const ListPage = ({ match, history }: any) => {
@@ -158,37 +186,33 @@ const ListPage = ({ match, history }: any) => {
         history={history}
       />
       <Container>
-        {loading ? (
-          <h1
-            style={{
-              textAlign: 'center',
-              width: '100%',
-              position: 'absolute',
-              top: '100px',
-            }}>
-            Loading...
-          </h1>
-        ) : (
-          <ListHeader keyword={decodedKeyword} users={users} />
-        )}
-        {!loading &&
-          posts.map((post, index) => {
-            return (
-              <Post
-                key={index}
-                post={post}
-                index={index}
-                handleSignUpModal={() => setSignUpModal(true)}
-              />
-            );
-          })}
-        {!loading && (
-          <StyledSideBanner
-            recommends={recommends}
-            history={history}
-            changeKeyword={changeKeyword}
-          />
-        )}
+        <div className='list-container'>
+          {loading ? (
+            <h1 className='list-loading'>Loading...</h1>
+          ) : (
+            <ListHeader keyword={decodedKeyword} users={users} />
+          )}
+          {!loading &&
+            posts.map((post, index) => {
+              return (
+                <Post
+                  key={index}
+                  post={post}
+                  index={index}
+                  handleSignUpModal={() => setSignUpModal(true)}
+                />
+              );
+            })}
+        </div>
+        <div className='banner-container'>
+          {!loading && (
+            <SideBanner
+              recommends={recommends}
+              history={history}
+              changeKeyword={changeKeyword}
+            />
+          )}
+        </div>
       </Container>
       {isFocusDimActivated ? <FocusDim /> : null}
       {isSignInModalOpen || isSignUpModalOpen ? (

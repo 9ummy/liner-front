@@ -6,17 +6,25 @@ interface Props {
 }
 
 const Container = styled.div`
-  width: 50%;
-  margin-left: calc(20% + 50px);
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
+
+  .list-header-title {
+    margin-bottom: 15px;
+    position: static;
+    text-align: left;
+  }
+  span {
+    color: #787d86;
+  }
 `;
 
 const ListHeader = ({ keyword, users }: Props) => {
   return (
     <Container>
-      <h1 style={{ marginBottom: '15px' }}>We found Trusted Results!</h1>
-      <span style={{ color: '#787d86' }}>
+      <h1 className='list-header-title'>We found Trusted Results!</h1>
+      <span>
         Trusted Results on '{keyword}' from '{users}' people.
       </span>
     </Container>

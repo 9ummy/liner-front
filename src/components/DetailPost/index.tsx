@@ -13,6 +13,16 @@ interface Props {
 }
 
 const Container = styled.div`
+  @media only screen and (max-width: 719px) {
+    min-width: 320px;
+    width: 90%;
+    margin: auto;
+  }
+  @media only screen and (max-width: 850px) {
+    min-width: 320px;
+    margin-left: 20%;
+  }
+
   width: 50%;
   margin-left: calc(20% + 50px);
   margin-right: auto;
@@ -88,7 +98,7 @@ const Button = styled.button`
 
 const PostTitleContainer = styled.div`
   display: flex;
-  flex-direction: column; // 이미지랑 타이틀 파비콘 들어갈 부분
+  flex-direction: column;
   a {
     display: flex;
   }
