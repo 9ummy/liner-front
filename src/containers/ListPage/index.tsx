@@ -115,8 +115,6 @@ const ListPage = ({ match, history }: any) => {
           num_of_phrase: 7,
         },
       });
-      console.log(res.data);
-
       setUsers(res.data.approx_trust);
       setAnchor(res.data.anchor);
       setPosts(res.data.items);

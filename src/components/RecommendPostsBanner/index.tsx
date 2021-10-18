@@ -20,6 +20,7 @@ const Container = styled.div`
   flex-direction: column;
   padding: 10px 16px;
   margin-top: 15px;
+  margin-bottom: 150px;
   border-radius: 8px;
   background-color: #f6f8fa;
 
@@ -112,6 +113,7 @@ const RecommendPostBanner = ({
                   `/liner.us/trusted-search/highlight/en/${post.document_id}/${encodedTitle}`
                 );
                 changePost();
+                setLastIndex(7);
               }}>
               <p>{post.title}</p>
             </div>

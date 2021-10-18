@@ -23,15 +23,8 @@ interface Props {
 }
 
 const Container = styled.div`
-  /* @media only screen and (max-width: 719px) {
-    min-width: 320px;
-    width: 90%;
-    margin: auto;
-  } */
   width: 100%;
   background-color: white;
-  /* margin-left: calc(20% + 50px); */
-  /* margin-right: auto; */
   padding-top: 20px;
 `;
 

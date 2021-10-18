@@ -52,15 +52,9 @@ const PostsContainer = styled.div`
 `;
 
 const BannerContainer = styled.div`
-  /* flex-grow: 3;
-  display: flex;
-  flex-direction: column; */
   @media only screen and (max-width: 719px) {
     display: none;
   }
-  /* flex-grow: 3; */
-  /* width: calc(30% - 50px);
-   */
   margin-right: 50px;
   width: 30%;
 `;
@@ -76,8 +70,6 @@ const DetailPage = ({ match, history }: any) => {
   const [postsByPhrase, setPostsByPhrase] = useState<any[]>([]);
   const [keywordsById, setKeywordsById] = useState<string[]>([]);
   const [postsById, setPostsById] = useState([]);
-
-  // console.log(postsByPhrase);
 
   useEffect(() => {
     getPost();
@@ -112,7 +104,6 @@ const DetailPage = ({ match, history }: any) => {
         headers: { Authorization: 'Bearer null' },
       });
       setPost(res.data);
-      // console.log(post);
       getPostsByPhrase();
     } catch (e) {
       console.log(e);

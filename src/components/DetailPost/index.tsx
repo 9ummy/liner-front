@@ -15,8 +15,6 @@ interface Props {
 const Container = styled.div`
   @media only screen and (max-width: 719px) {
     min-width: 320px;
-    /* width: 90%; */
-    /* margin: auto; */
   }
   @media only screen and (max-width: 850px) {
     min-width: 320px;
