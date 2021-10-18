@@ -15,17 +15,12 @@ interface Props {
 const Container = styled.div`
   @media only screen and (max-width: 719px) {
     min-width: 320px;
-    width: 90%;
-    margin: auto;
+    /* width: 90%; */
+    /* margin: auto; */
   }
   @media only screen and (max-width: 850px) {
     min-width: 320px;
-    margin-left: 20%;
   }
-
-  width: 50%;
-  margin-left: calc(20% + 50px);
-  margin-right: auto;
   margin-bottom: 100px;
 
   .highlight-title {

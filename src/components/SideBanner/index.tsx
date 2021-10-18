@@ -12,6 +12,7 @@ const Container = styled.div`
   @media only screen and (max-width: 719px) {
     display: none;
   }
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   padding: 10px 16px;

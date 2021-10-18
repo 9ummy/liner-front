@@ -12,30 +12,30 @@ import DetailPost from '../../components/DetailPost';
 import RecommendPostBanner from '../../components/RecommendPostsBanner';
 
 const Container = styled.div`
+  display: flex;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 100px;
 `;
 
-const BannerContainer = styled.div`
-  position: absolute;
-  top: 100px;
-  right: 50px;
-  width: 17vw;
-`;
-
 const PostsContainer = styled.div`
-  margin: 0 auto;
+  @media only screen and (max-width: 719px) {
+    min-width: 320px;
+    width: 100%;
+    margin: 0 25px;
+  }
+
+  width: 50%;
+  margin-left: calc(20% + 50px);
+  margin-right: 10px;
+
   .posts-title {
     @media only screen and (max-width: 719px) {
       min-width: 320px;
-      width: 90%;
-      margin: auto;
+      width: 100%;
     }
     width: 50%;
-    margin-left: calc(20% + 50px);
-    margin-right: auto;
     padding-bottom: 20px;
     border-bottom: 1px solid #eef1f4;
   }
@@ -46,10 +46,23 @@ const PostsContainer = styled.div`
       margin: auto;
     }
     width: 50%;
-    margin-left: calc(20% + 50px);
     margin-right: auto;
     padding: 20px 0;
   }
+`;
+
+const BannerContainer = styled.div`
+  /* flex-grow: 3;
+  display: flex;
+  flex-direction: column; */
+  @media only screen and (max-width: 719px) {
+    display: none;
+  }
+  /* flex-grow: 3; */
+  /* width: calc(30% - 50px);
+   */
+  margin-right: 50px;
+  width: 30%;
 `;
 
 const DetailPage = ({ match, history }: any) => {
@@ -163,7 +176,7 @@ const DetailPage = ({ match, history }: any) => {
           anchor: byIdAnchor,
         },
       });
-      // showMore 버튼 눌렀을 때 data fetch가 더 일어나도록 하려고 했는데 시간이 없어 초기 20개 값만 사용하도록 해두었습니다
+      // showMore 버튼 눌렀을 때 data fetch가 더 일어나야 하는 건지 모르겠어서 일단 두었습니다
       // const fetchedPosts = res.data.items;
       // const mergedPosts = [...new Set([...postsByPhrase, ...fetchedPosts])];
       // setPostsByPhrase(mergedPosts);
@@ -205,13 +218,13 @@ const DetailPage = ({ match, history }: any) => {
         history={history}
       />
       <Container>
-        {post && (
-          <DetailPost
-            post={post}
-            handleSignUpModal={() => setSignUpModal(true)}
-          />
-        )}
         <PostsContainer>
+          {post && (
+            <DetailPost
+              post={post}
+              handleSignUpModal={() => setSignUpModal(true)}
+            />
+          )}
           {postsByPhrase && <h2 className='posts-title'>More like this</h2>}
           {postsByPhrase.map((post: any, index: number) => {
             return (
@@ -226,21 +239,21 @@ const DetailPage = ({ match, history }: any) => {
           })}
           {fetching && <h2 className='posts-by-phrase-loading'>Loading...</h2>}
         </PostsContainer>
-      </Container>
-      <BannerContainer>
-        <SideBanner
-          recommends={keywordsById}
-          history={history}
-          changeKeyword={() => {}}
-        />
+        <BannerContainer>
+          <SideBanner
+            recommends={keywordsById}
+            history={history}
+            changeKeyword={() => {}}
+          />
 
-        <RecommendPostBanner
-          history={history}
-          recommends={postsById}
-          changeKeyword={() => {}}
-          changePost={changePost}
-        />
-      </BannerContainer>
+          <RecommendPostBanner
+            history={history}
+            recommends={postsById}
+            changeKeyword={() => {}}
+            changePost={changePost}
+          />
+        </BannerContainer>
+      </Container>
 
       {isFocusDimActivated ? <FocusDim /> : null}
       {isSignInModalOpen || isSignUpModalOpen ? (

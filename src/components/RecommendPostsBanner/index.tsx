@@ -39,6 +39,7 @@ const Container = styled.div`
     font-family: 'Roboto';
     margin-bottom: 20px;
     .post-title {
+      width: 100%;
       margin: 0;
       text-decoration: none;
       z-index: 1;
